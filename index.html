@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You ❤️</title>
+
+    <style>
+
+        /* ===== BASIC RESET ===== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* ===== PAGE BACKGROUND ===== */
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+
+            background: linear-gradient(
+                135deg,
+                #160810,
+                #4b1029,
+                #170711
+            );
+
+            color: #fff0f4;
+            font-family: Georgia, "Times New Roman", serif;
+            text-align: center;
+        }
+
+
+        /* ===== WELCOME CARD ===== */
+
+        .welcome {
+            width: 100%;
+            max-width: 650px;
+            padding: 45px 24px;
+
+            border: 1px solid rgba(255, 190, 210, 0.3);
+            border-radius: 24px;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            box-shadow:
+                0 0 45px rgba(255, 70, 130, 0.12);
+        }
+
+
+        /* ===== ANIMATED HEART ===== */
+
+        .heart {
+            font-size: 64px;
+            margin-bottom: 24px;
+
+            animation: heartbeat 1.5s infinite;
+        }
+
+
+        /* ===== MAIN HEADING ===== */
+
+        h1 {
+            color: #fff0f4;
+            font-size: clamp(32px, 7vw, 52px);
+            font-weight: normal;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+
+        /* ===== PARAGRAPHS ===== */
+
+        p {
+            color: #f3cbd8;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* ===== SMALL CAPTION ===== */
+
+        .subtitle {
+            margin-top: 20px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #eaa1b9;
+        }
+
+
+        /* ===== BUTTONS ===== */
+
+        .enter-button {
+            margin-top: 32px;
+            padding: 15px 30px;
+
+            border: 1px solid #f0a8c0;
+            border-radius: 30px;
+
+            background: linear-gradient(
+                135deg,
+                #f8c6d8,
+                #ed91b2
+            );
+
+            color: #351020;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 15px;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 6px 24px rgba(255, 105, 160, 0.25);
+        }
+
+        .enter-button:focus-visible {
+            outline: 2px solid #fff0f4;
+            outline-offset: 5px;
+        }
+
+
+        /* ===== PASSWORD INPUT ===== */
+
+        .password-input {
+            width: 100%;
+            max-width: 350px;
+            margin-top: 25px;
+            padding: 15px;
+
+            border: 1px solid #eaa1b9;
+            border-radius: 25px;
+
+            background: rgba(255,255,255,0.08);
+
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            text-align: center;
+
+            outline: none;
+        }
+
+        .password-input::placeholder {
+            color: #e5b7c7;
+        }
+
+        .password-input:focus {
+            border-color: #fff0f4;
+            box-shadow: 0 0 12px rgba(255, 105, 160, 0.2);
+        }
+
+
+/* ===== HEARTFELT LETTER DESIGN ===== */
+
+.letter-screen {
+    max-width: 750px;
+}
+
+.letter-content {
+    margin-top: 30px;
+    padding: 30px 25px;
+
+    background: rgba(255, 220, 230, 0.06);
+
+    border: 1px solid rgba(255, 190, 210, 0.2);
+    border-radius: 16px;
+
+    text-align: left;
+}
+
+.letter-content p {
+    margin-bottom: 22px;
+    line-height: 1.9;
+}
+
+.letter-signature {
+    margin-top: 35px;
+    color: #f0a8c0;
+    font-style: italic;
+}
+
+        /* ===== HIDDEN SCREEN CONTROL ===== */
+
+        [hidden] {
+            display: none !important;
+        }
+
+
+        /* ===== HEART ANIMATION ===== */
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+
+        @media (max-width: 480px) {
+
+            .welcome {
+                padding: 38px 20px;
+            }
+
+            .heart {
+                font-size: 56px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .subtitle {
+                font-size: 11px;
+                letter-spacing: 1.5px;
+            }
+
+            .enter-button {
+                width: 100%;
+                max-width: 260px;
+            }
+        }
+
+
+        /* ===== REDUCED MOTION ACCESSIBILITY ===== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .heart {
+                animation: none;
+            }
+
+            .enter-button {
+                transition: none;
+            }
+        }
+/* =================================
+   ROMANTIC LETTER SCREEN
+================================= */
+
+.letter-screen {
+    position: relative;
+    overflow: visible;
+}
+
+/* Letter appearance */
+.letter-content {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 25px auto;
+    padding: 30px 35px;
+
+    background: rgba(255, 235, 243, 0.07);
+    border: 1px solid rgba(255, 182, 193, 0.25);
+    border-radius: 18px;
+
+    text-align: left;
+    line-height: 1.9;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+/* Letter paragraphs */
+.letter-content p {
+    margin-bottom: 22px;
+    font-size: 1rem;
+    color: #ffe5ed;
+    line-height: 1.9;
+}
+
+/* Letter opening */
+.letter-content p:first-child {
+    color: #ffb6cf;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+/* Gift hint */
+.gift-hint {
+    margin: 30px 0;
+    padding: 22px;
+    border-left: 3px solid #ff80ab;
+    border-radius: 10px;
+    background: rgba(255, 128, 171, 0.09);
+}
+
+.gift-hint p {
+    margin-bottom: 14px;
+}
+
+.gift-hint-title {
+    color: #ffb6cf !important;
+    font-weight: bold;
+    font-size: 1.1rem !important;
+}
+
+.gift-hint strong {
+    color: #ff80ab;
+    letter-spacing: 2px;
+}
+
+/* Closing signature */
+.letter-signature {
+    margin-top: 35px;
+    text-align: right;
+    color: #ffb6cf !important;
+    font-style: italic;
+    font-size: 1.05rem !important;
+}
+
+/* Floating pink heart */
+.letter-side-heart {
+    position: absolute;
+    right: 12px;
+    top: 48%;
+    font-size: 2.8rem;
+    animation: letterHeartFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.65));
+    pointer-events: none;
+}
+
+@keyframes letterHeartFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(8deg);
+    }
+}
+
+/* Smartphone adjustments */
+@media (max-width: 600px) {
+    .letter-content {
+        padding: 22px 18px;
+        margin: 20px auto;
+        border-radius: 14px;
+    }
+
+    .letter-content p {
+        font-size: 0.94rem;
+        line-height: 1.85;
+        margin-bottom: 19px;
+    }
+
+    .letter-side-heart {
+        position: relative;
+        display: block;
+        top: auto;
+        right: auto;
+        text-align: right;
+        font-size: 2.2rem;
+        margin: 0 12px -8px 0;
+    }
+
+    .gift-hint {
+        padding: 17px;
+    }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    .letter-side-heart {
+        animation: none;
+    }
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+    margin: 25px auto;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.2);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ===== FIRST SCREEN: WELCOME ===== -->
+
+    <main class="welcome" id="welcome-screen">
+
+        <div class="heart" aria-hidden="true">❤️</div>
+
+        <h1>Happy Birthday, My Love ❤️</h1>
+
+        <p>
+            Today is all about celebrating you.
+            I've created this little corner of the world
+            just for you, filled with love, memories,
+            and surprises from my heart to yours.
+        </p>
+
+        <p class="subtitle">
+            Your day. Your story. Our love.
+        </p>
+
+        <button
+            class="enter-button"
+            type="button"
+            onclick="openSurprise()"
+        >
+            Open My Heart <span aria-hidden="true">♥</span>
+        </button>
+
+    </main>
+
+
+
+    <!-- ===== SECOND SCREEN: ROMANTIC INTRODUCTION ===== -->
+
+    <section class="welcome" id="love-screen" hidden>
+
+        <div class="heart" aria-hidden="true">💗</div>
+
+        <p class="subtitle">
+            A LITTLE SOMETHING FOR YOU
+        </p>
+
+        <h1>My Favourite Person</h1>
+
+        <p>
+            If I could give you one thing in this world,
+            it would be the ability to see yourself through
+            my eyes. Maybe then you'd understand just how
+            special you are to me.
+        </p>
+
+        <p style="margin-top: 20px;">
+            And this is only the beginning...
+        </p>
+
+        <button
+            class="enter-button"
+            type="button"
+            onclick="showPasswordScreen()"
+        >
+            Continue to My Surprise ♥
+        </button>
+
+    </section>
+
+
+
+    <!-- ===== THIRD SCREEN: SECRET PASSWORD ===== -->
+
+    <section class="welcome" id="password-screen" hidden>
+
+        <div class="heart" aria-hidden="true">🔐</div>
+
+        <p class="subtitle">
+            SOMETHING SPECIAL AWAITS YOU
+        </p>
+
+        <h1>Just One Little Thing...</h1>
+
+        <p>
+            Before I let you into this little world
+            I've created for you, there's one thing
+            only you should know.
+        </p>
+
+        <p style="margin-top: 20px;">
+            Enter our secret phrase, my love. ❤️
+        </p>
+
+        <input
+            type="password"
+            id="secret-password"
+            class="password-input"
+            placeholder="Enter our secret phrase..."
+            autocomplete="off"
+        >
+
+        <p
+            id="password-error"
+            style="color: #ff8da8; margin-top: 12px; font-size: 14px;"
+            aria-live="polite"
+        ></p>
+
+        <button
+            class="enter-button"
+            type="button"
+            onclick="unlockVideo()"
+        >
+            Unlock My Surprise ♥
+        </button>
+
+        <br>
+
+        <button
+            class="enter-button"
+            type="button"
+            onclick="backToIntroduction()"
+            style="background: transparent; color: #fff0f4;"
+        >
+            Go Back
+        </button>
+
+    </section>
+
+
+
+    <!-- ===== FOURTH SCREEN: PERSONAL BIRTHDAY VIDEO ===== -->
+
+    <section class="welcome" id="video-screen" hidden>
+
+        <div class="heart" aria-hidden="true">💝</div>
+
+        <p class="subtitle">
+            MADE WITH LOVE, JUST FOR YOU
+        </p>
+
+        <h1>A Little Message From Me ❤️</h1>
+
+        <p style="margin-bottom: 25px;">
+            Before you continue, I have something special
+            I would love you to watch.
+        </p>
+
+        
+<div class="video-container">
+    <iframe
+        src="https://www.youtube-nocookie.com/embed/JXRhapVoB9g"
+        title="A Birthday Message For You ❤️"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
+>
+
+<button
+    class="enter-button"
+    type="button"
+    onclick="showLetter()"
+>
+    Read My Letter ♥
+</button>
+
+        <p style="margin-top: 20px;">
+            I hope this makes you smile. 💗
+        </p>
+
+    </section>
+
+
+    <!-- ===== FIFTH SCREEN: HEARTFELT LETTER ===== -->
+
+    <section class="welcome letter-screen" id="letter-screen" hidden>
+
+        <div class="heart" aria-hidden="true">💌</div>
+
+        <p class="subtitle">
+            A LETTER FROM MY HEART
+        </p>
+
+        <h1>To My Beautiful Girl ❤️</h1>
+<span class="letter-side-heart" aria-hidden="true">💗</span>
+
+<div class="letter-content">
+        <div class="letter-content">
+
+            <p>My Love,</p>
+
+            <p>
+                Today, I just want to remind you how special
+                you are to me. Having you in my life is
+                something I never want to take for granted.
+            </p>
+
+            <p>
+You're not a teenager anymore; you're stepping into young adulthood, and I am genuinely happy that I get to start this journey alongside you. You're the smartest person I've ever been with, and I mean that wholeheartedly! One thing I particularly love about you is how you challenge almost every idea I share with you. Sometimes, you'll come back a few days later with questions about something I told you I was working on. That makes me incredibly happy because it shows me that you actually think about the things I share with you. You don't just agree with everything I say; you listen, think things through, and challenge me. I admire that about you more than you probably realise.
+            </p>
+
+            <p>
+                You bring happiness into my world in ways
+                words cannot always explain. Your smile,
+                your presence, and the little things that
+                make you who you are mean more to me than
+                you could ever imagine.
+            </p>
+
+            <p>
+                I hope this new chapter of your life brings
+                you happiness, peace, growth, and everything
+                your heart has been praying for.
+            </p>
+
+            <p>
+                No matter how many birthdays come and go,
+                I hope you never forget how deeply loved
+                and appreciated you are.
+            </p>
+
+           <p>Happy Birthday, my love. ❤️</p>
+
+<div class="gift-hint">
+    <p class="gift-hint-title">A Little Hint About Your Gift… ⏳</p>
+
+    <p>
+        They say time is precious, but I've always believed
+        that the best way to spend it is with someone you love.
+    </p>
+
+    <p>
+        We've invested in <strong>TIME</strong> together,
+        created beautiful memories, and I look forward
+        to making many more.
+    </p>
+
+    <p>
+        Perhaps this little hint will help you figure out
+        what's waiting for you… 😉❤️
+    </p>
+</div>
+
+<p class="letter-signature">
+    Forever yours,<br>
+    Your Pink Person 💗
+</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== JAVASCRIPT: SCREEN NAVIGATION ===== -->
+
+    <script>
+
+        // Temporary password.
+        // Replace this with your chosen secret phrase.
+
+        const correctPassword = "PinkPerson";
+
+
+        // FIRST SCREEN → SECOND SCREEN
+
+        function openSurprise() {
+
+            document.getElementById("welcome-screen").hidden = true;
+
+            document.getElementById("love-screen").hidden = false;
+
+        }
+
+
+        // SECOND SCREEN → THIRD SCREEN
+
+        function showPasswordScreen() {
+
+            document.getElementById("love-screen").hidden = true;
+
+            document.getElementById("password-screen").hidden = false;
+
+        }
+
+
+        // THIRD SCREEN → SECOND SCREEN
+
+        function backToIntroduction() {
+
+            document.getElementById("password-screen").hidden = true;
+
+            document.getElementById("love-screen").hidden = false;
+
+        }
+
+
+        // CHECK PASSWORD AND UNLOCK VIDEO
+
+        function unlockVideo() {
+
+            const enteredPassword = document
+                .getElementById("secret-password")
+                .value;
+
+            const errorMessage = document
+                .getElementById("password-error");
+
+
+            if (enteredPassword === correctPassword) {
+
+                document.getElementById("password-screen").hidden = true;
+
+                document.getElementById("video-screen").hidden = false;
+
+                errorMessage.textContent = "";
+
+            } else {
+
+                errorMessage.textContent =
+                    "Not quite, my love. Try again. ❤️";
+
+            }
+
+        }
+
+// VIDEO → HEARTFELT LETTER
+
+function showLetter() {
+
+    document.getElementById("video-screen").hidden = true;
+
+    document.getElementById("letter-screen").hidden = false;
+
+}
+
+
+    </script>
+
+
+</body>
+
+</html>
+
